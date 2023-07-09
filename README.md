@@ -11,8 +11,8 @@ So far there are a few commands implemented, but still a lot that aren't, and so
 # Commands
 
 # Auth
-- [] auth
-- [] --flags
+- [ ] auth
+- [ ] --flags
 
 ## Branch
 - [x] create
@@ -22,84 +22,84 @@ So far there are a few commands implemented, but still a lot that aren't, and so
 - [x] top
 - [x] bottom
 - [x] info
-- [] delete
-- [] rename
-- [] restack
-- [] split
-- [] squash
-- [] submit
-- [] track
-- [] untrack
-- [] unbranch
-- [] --flags
+- [ ] delete
+- [ ] rename
+- [ ] restack
+- [ ] split
+- [ ] squash
+- [ ] submit
+- [ ] track
+- [ ] untrack
+- [ ] unbranch
+- [ ] --flags
 
 ## Changelog
 - [x] changelog
 
 ## Commit
-- [] create
-- [] ammend
+- [ ] create
+- [ ] ammend
 
 ## Completion
-- [] completion
+- [ ] completion
 
 ## Continue
-- [] continue
+- [ ] continue
 
 ## Dash
-- [] dash
+- [ ] dash
 
 ## Docs
-- [] docs
+- [ ] docs
 
 ## Downstack
-- [] edit
+- [ ] edit
 - [x] get
-- [] restack
-- [] submit
-- [] test
-- [] track
+- [ ] restack
+- [ ] submit
+- [ ] test
+- [ ] track
 
 ## Feedback
-- [] feedback
-- [] debug-context
-- [] --flags
+- [ ] feedback
+- [ ] debug-context
+- [ ] --flags
 
 ## Fish
-- [] fish
+- [ ] fish
 
 ## Log
 - [x] log
 - [x] log short
 - [x] log long
-- [] --flags
+- [ ] --flags
 
 ## Repo
-- [] init
-- [] name
-- [] owner
-- [] pr-templates
-- [] remote
-- [] sync
+- [ ] init
+- [ ] name
+- [ ] owner
+- [ ] pr-templates
+- [ ] remote
+- [ ] sync
 
 ## Stack
-- [] restack
-- [] submit
-- [] test
+- [ ] restack
+- [ ] submit
+- [ ] test
 
 ## Upstack
-- [] onto
-- [] restack
-- [] submit
-- [] test
+- [ ] onto
+- [ ] restack
+- [ ] submit
+- [ ] test
 
 ## User
-- [] branch-date
-- [] branch-prefix
-- [] branch-replacement
-- [] editor
-- [] pager
-- [] restack-date
-- [] submit body
-- [] tips
+- [ ] branch-date
+- [ ] branch-prefix
+- [ ] branch-replacement
+- [ ] editor
+- [ ] pager
+- [ ] restack-date
+- [ ] submit body
+- [ ] tips
 
