@@ -5,8 +5,8 @@ local Job = require('plenary.job')
 function Dashboard:launch_dashboard()
   -- Create a new window for the buffer
   local dashboard = Windows:create_window('Graphite Dashboard', 'Hint: [b]ranch | [C]hangelog | [d]ownstack | [l]og | [s]tatus | [u]pstack | [q]uit')
-
-  self.dashboard_bufnr = dashboard.bufnr
+  Dashboard.dashboard_bufnr = dashboard.bufnr
+  Dashboard.winid = dashboard.winid
 
   vim.cmd('autocmd BufEnter <buffer=' .. self.dashboard_bufnr .. '> lua require("graphite.dashboard"):refresh_dashboard()')
 
@@ -19,7 +19,7 @@ function Dashboard:launch_dashboard()
       vim.schedule(function()
         -- Set the buffer's lines to the keybind hints
         vim.api.nvim_buf_set_lines(dashboard.bufnr, 0, -1, false, {
-          'Currently checked out branch: ' .. output[1],
+          'v.0.1 Currently checked out branch: ' .. output[1],
         })
       end)
     end,
