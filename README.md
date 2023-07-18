@@ -17,8 +17,8 @@ So far there are a few commands implemented, but still a lot that aren't, and so
 ## Branch
 - [x] create
 - [x] checkout
-- [x] up (needs refactor to check if trunk of multiple)
-- [x] down
+- [x] up
+- [x] down (needs refactor to check if trunk of multiple)
 - [x] top
 - [x] bottom
 - [x] info
