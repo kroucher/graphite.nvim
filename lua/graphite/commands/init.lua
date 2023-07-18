@@ -1,6 +1,8 @@
 local Windows = require('graphite.windows')
 local Job = require('plenary.job')
 local Input = require('nui.input')
+local Menu = require('nui.menu')
+local dashboard = require('graphite.dashboard')
 
 local Commands = {}
 
@@ -54,7 +56,66 @@ function Commands:gt_branch_down()
 end
 
 function Commands:gt_branch_up()
-  Commands:run_command(gt.branch_up, {}, false)
+  local branches = {}
+  local error_message = 'ERROR: Cannot get upstack branch in non-interactive mode; multiple choices available:'
+  local current_branch = vim.fn.system('git rev-parse --abbrev-ref HEAD'):gsub('\n', '')
+  local job = Job:new({
+    command = 'gt',
+    args = { 'branch', 'up', '--no-interactive' },
+  })
+
+  job:sync()
+
+  local output = job:result()
+  if vim.tbl_contains(output, 'Checked out') then
+    vim.notify(output, vim.log.levels.INFO, {})
+  elseif vim.tbl_contains(output, error_message) then
+    print('found error')
+    for _, line in ipairs(output) do
+      -- if line is not the current branch and not the error message, add it to the branches table
+      if line ~= current_branch and line ~= error_message then
+        table.insert(branches, Menu.item(line))
+      end
+    end
+
+    if #branches > 0 then
+      vim.notify('Multiple branches found at the same level. Select a branch to guide the navigation', vim.log.levels.INFO, {})
+      -- Create a menu containing the branch names
+      local menu = Menu({
+        relative = 'editor',
+        border = {
+          style = 'rounded',
+          text = {
+            top = '[Select a branch to move up to:]',
+            top_align = 'center',
+          },
+        },
+        size = {
+          width = '30%',
+          height = '20%',
+        },
+        position = '50%',
+      }, {
+        lines = branches,
+        on_close = function()
+          print('Menu closed')
+        end,
+        on_submit = function(item)
+          local output_inner = vim.fn.system('gt branch checkout ' .. item.text)
+          local exit_code = vim.v.shell_error
+          if exit_code == 0 then
+            vim.notify('Checked out branch: ' .. item.text, vim.log.levels.INFO, {})
+            -- focus the dashboard window
+            vim.api.nvim_set_current_win(dashboard.winid)
+          else
+            vim.notify('Error checking out branch: ' .. item.text .. '\nOutput: ' .. output_inner, vim.log.levels.ERROR, {})
+          end
+        end,
+      })
+      -- Open the menu
+      menu:mount()
+    end
+  end
 end
 
 function Commands:gt_branch_info()
