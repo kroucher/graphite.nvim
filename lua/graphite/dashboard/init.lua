@@ -4,7 +4,7 @@ local Job = require('plenary.job')
 
 function Dashboard:launch_dashboard()
   -- Create a new window for the buffer
-  local dashboard = Windows:create_window('Graphite Dashboard', 'Hint: [b]ranch | [C]hangelog | [d]ownstack | [l]og | [s]tatus | [u]pstack | [q]uit')
+  local dashboard = Windows:create_window('Graphite Dashboard', 'Hint: [b]ranch | [C]hangelog | [d]ownstack | [D]ocs | [l]og | [s]tatus | [u]pstack | [q]uit')
   Dashboard.dashboard_bufnr = dashboard.bufnr
   Dashboard.winid = dashboard.winid
 
@@ -58,11 +58,12 @@ function Dashboard:launch_dashboard()
   dashboard:map('n', 'C', ":lua require('graphite.commands'):gt_changelog()<CR>")
   dashboard:map('n', 'l', ":lua require('graphite.keybinds'):open_log_keybinds_window()<CR>")
   dashboard:map('n', 's', ":lua require('graphite.commands'):gt_status()<CR>")
+  dashboard:map('n', 'D', ":lua require('graphite.commands'):open_docs()<CR>")
   dashboard:map('n', 'u', ":lua require('graphite.keybinds'):open_upstack_keybinds_window()<CR>")
   dashboard:map('n', 'q', function()
     Dashboard:close_dashboard_window()
   end)
-  dashboard:map('n', 'd', ":lua require('graphite.keybinds').open_downstack_keybinds_window()<CR>")
+  dashboard:map('n', 'd', ":lua require('graphite.keybinds'):open_downstack_keybinds_window()<CR>")
 end
 
 -- Define a function to close the dashboard window

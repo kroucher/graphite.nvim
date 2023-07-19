@@ -3,6 +3,7 @@ local Job = require('plenary.job')
 local Input = require('nui.input')
 local Menu = require('nui.menu')
 local dashboard = require('graphite.dashboard')
+local utils = require('graphite.utils')
 
 local Commands = {}
 
@@ -27,6 +28,10 @@ local gt = {
 }
 
 -- Define a function for each Graphite CLI command
+function Commands:open_docs()
+  utils:get_url('https://graphite.dev/docs/getting-started-with-graphite')
+end
+
 function Commands:gt_status()
   Commands:run_command(gt.status, {}, true)
 end
