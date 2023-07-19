@@ -50,7 +50,7 @@ So far there are a few commands implemented, but still a lot that aren't, and so
 - [ ] dash
 
 ## Docs
-- [ ] docs
+- [x] docs
 
 ## Downstack
 - [ ] edit
