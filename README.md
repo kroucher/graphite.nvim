@@ -4,7 +4,7 @@
 
 # Graphite.nvim
 
-A wrapper around the Graphite CLI, presenting you with a dashboard to run Graphite commands from within Neovim.
+A wrapper around the [Graphite](https://graphite.dev/) CLI, presenting you with a dashboard to run Graphite commands from within Neovim.
 
 So far there are a few commands implemented, but still a lot that aren't, and some that need refactoring due to unaccounted-for errors/interactive CLIs
 
